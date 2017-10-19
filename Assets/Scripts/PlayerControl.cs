@@ -25,7 +25,9 @@ public class PlayerControl : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        #if UNITY_ANDROID
         MovimientoRGB();
+        #endif
     }
 
     //void MovimientoTransform()
@@ -41,20 +43,20 @@ public class PlayerControl : MonoBehaviour {
     public void MovimientoRGB()
     {
         // movimiento horizontal
-        float h = Input.GetAxis("Horizontal");
-        float hm = CrossPlatformInputManager.GetAxis("Horizontal");
+        float h = Input.GetAxisRaw("Horizontal");
+        //float hm = CrossPlatformInputManager.GetAxis("Horizontal");
 
         // movimiento vertical
-        float v = Input.GetAxis("Vertical");
-        float vm = CrossPlatformInputManager.GetAxis("Vertical");
+        float v = Input.GetAxisRaw("Vertical");
+        //float vm = CrossPlatformInputManager.GetAxis("Vertical");
 
         Vector2 vel = new Vector2(rgb.velocity.x, rgb.velocity.y);
 
         //añadir velocidad
         h *= VelocidadJugador;
-        hm *= VelocidadJugador;
+        //hm *= VelocidadJugador;
         v *= VelocidadJugador;
-        vm *= VelocidadJugador;
+        //vm *= VelocidadJugador;
 
         //if (h > 0 || v > 0)
         //{
