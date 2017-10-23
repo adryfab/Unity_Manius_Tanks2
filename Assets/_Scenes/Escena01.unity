@@ -540,7 +540,7 @@ Transform:
   - {fileID: 2118315798}
   - {fileID: 154027985}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &201730751
 BoxCollider2D:
@@ -703,7 +703,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1417,10 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
-  up: {fileID: 21300000, guid: ee8796313936940488ad2faea8330014, type: 3}
-  down: {fileID: 21300000, guid: 99f25c4faadb6de48869c75960935eab, type: 3}
-  left: {fileID: 21300000, guid: c6c89c6020ac61a4cbaace6714c338af, type: 3}
-  right: {fileID: 21300000, guid: d67ff1f1da63a61499a17cd4f1a87bd9, type: 3}
+  disparo: {fileID: 1572929558479342, guid: 406df6a11d963cd4caf4719ad8815428, type: 2}
 --- !u!95 &2131665130
 Animator:
   serializedVersion: 3

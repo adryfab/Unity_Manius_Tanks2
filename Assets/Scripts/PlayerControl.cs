@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerControl : MonoBehaviour {
 
     public float speed = 10;
+    public GameObject disparo;
 
     private Rigidbody2D myBody;
     private Animator anim;
@@ -17,7 +18,7 @@ public class PlayerControl : MonoBehaviour {
     {
         myBody = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
-        rend = GetComponent<SpriteRenderer>();
+        rend = this.GetComponent<SpriteRenderer>();
         CambiarColorPlayer();
     }
 
@@ -46,6 +47,13 @@ public class PlayerControl : MonoBehaviour {
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
+
+        Debug.Log("Input.touchCount: " + Input.touchCount.ToString() + " - Input.GetMouseButtonDown(0): "
+            + Input.GetMouseButtonDown(0).ToString());
+        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        {
+            CrearDisparo();
+        }
     }
 
     private void FixedUpdate()
@@ -57,7 +65,7 @@ public class PlayerControl : MonoBehaviour {
 
     private void CambiarColorPlayer()
     {
-        //rend.color = new Color(1, 1, 0, 1); //yellow
+        rend.color = new Color(1, 1, 0, 1); //yellow
         //rend.color = new Color(0, 0, 1, 1); //blue
         //rend.color = new Color(1, 0, 0, 1); //red
         //rend.color = new Color(0, 0, 0, 1); //black
@@ -67,5 +75,10 @@ public class PlayerControl : MonoBehaviour {
         //rend.color = new Color(0, 1, 0, 1); //green
         //rend.color = new Color(1, 0, 1, 1); //magenta
         //rend.color = new Color(1, 1, 1, 1); //white
+    }
+
+    private void CrearDisparo()
+    {
+        Instantiate(disparo, transform.position, Quaternion.identity);
     }
 }
