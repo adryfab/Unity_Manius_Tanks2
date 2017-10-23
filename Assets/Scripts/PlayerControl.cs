@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour {
 
     public float speed = 10;
     public GameObject disparo;
+    public Transform shotSpawn;
 
     private Rigidbody2D myBody;
     private Animator anim;
@@ -24,9 +25,6 @@ public class PlayerControl : MonoBehaviour {
 
     void Update()
     {        
-        //Debug.Log("Vertical: " + CrossPlatformInputManager.GetAxis("Vertical").ToString() +
-        //    " - Horizontal: " + CrossPlatformInputManager.GetAxis("Horizontal").ToString());
-
         playerMoving = false;
 
         if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || 
@@ -48,8 +46,6 @@ public class PlayerControl : MonoBehaviour {
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
 
-        Debug.Log("Input.touchCount: " + Input.touchCount.ToString() + " - Input.GetMouseButtonDown(0): "
-            + Input.GetMouseButtonDown(0).ToString());
         if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             CrearDisparo();
@@ -79,6 +75,6 @@ public class PlayerControl : MonoBehaviour {
 
     private void CrearDisparo()
     {
-        Instantiate(disparo, transform.position, Quaternion.identity);
+        Instantiate(disparo, shotSpawn.position, shotSpawn.rotation);
     }
 }

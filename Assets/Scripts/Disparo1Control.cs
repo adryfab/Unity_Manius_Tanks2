@@ -26,7 +26,10 @@ public class Disparo1Control : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void CambiarColorDisparo()
