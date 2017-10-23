@@ -48,6 +48,9 @@ public class PlayerControl : MonoBehaviour {
 
         if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
+            float hor = CrossPlatformInputManager.GetAxis("Horizontal");
+            float ver = CrossPlatformInputManager.GetAxis("Vertical");
+
             CrearDisparo();
         }
     }
