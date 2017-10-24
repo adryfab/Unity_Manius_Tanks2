@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour {
 
     public float speed = 10;
     public GameObject disparo;
-    public Transform shotSpawn;
+    public Transform trans;
 
     private Rigidbody2D myBody;
     private Animator anim;
@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour {
         myBody = this.GetComponent<Rigidbody2D>();
         anim = this.GetComponent<Animator>();
         rend = this.GetComponent<SpriteRenderer>();
+        trans = GameObject.Find("Disparo").transform;
         CambiarColorPlayer();
     }
 
@@ -27,37 +28,59 @@ public class PlayerControl : MonoBehaviour {
     {        
         playerMoving = false;
 
-        if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || 
-            CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
+        ////***Teclado***
+        //if (Input.GetAxis("Horizontal") != 0)
+        //{
+        //    playerMoving = true;
+        //    lastMove = new Vector2(Input.GetAxis("Horizontal"), 0f);
+        //}
+        //if (Input.GetAxis("Vertical") != 0)
+        //{
+        //    playerMoving = true;
+        //    lastMove = new Vector2(0f, Input.GetAxis("Vertical"));
+        //}
+        //anim.SetFloat("MoveX", Input.GetAxis("Horizontal"));
+        //anim.SetFloat("MoveY", Input.GetAxis("Vertical"));
+
+        //***GamePad***
+        if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
         {
             playerMoving = true;
             lastMove = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0f); 
         }
-        if (CrossPlatformInputManager.GetAxis("Vertical") > 0.5f || 
-            CrossPlatformInputManager.GetAxis("Vertical") < -0.5f)
+        if (CrossPlatformInputManager.GetAxis("Vertical") > 0.5f || CrossPlatformInputManager.GetAxis("Vertical") < -0.5f)
         {
             playerMoving = true;
             lastMove = new Vector2(0f, CrossPlatformInputManager.GetAxis("Vertical"));
         }
-
         anim.SetFloat("MoveX", CrossPlatformInputManager.GetAxis("Horizontal"));
         anim.SetFloat("MoveY", CrossPlatformInputManager.GetAxis("Vertical"));
+
+        //***Ambos***
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
 
-        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1") || Input.touchCount > 0)
         {
-            float hor = CrossPlatformInputManager.GetAxis("Horizontal");
-            float ver = CrossPlatformInputManager.GetAxis("Vertical");
-
-            CrearDisparo();
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.x = target.x * -1;
+            target.y = target.y * -1;
+            CrearDisparo(target.x, target.y, target.z, target);
         }
     }
 
     private void FixedUpdate()
     {
-        Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 
+        Vector2 moveVec;
+
+        ////***Teclado***
+        //moveVec = new Vector2(Input.GetAxis("Horizontal"),
+        //    Input.GetAxis("Vertical")) * speed;
+        //myBody.AddForce(moveVec);
+
+        //***GamePad***
+        moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 
             CrossPlatformInputManager.GetAxis("Vertical")) * speed;
         myBody.AddForce(moveVec);
     }
@@ -76,8 +99,21 @@ public class PlayerControl : MonoBehaviour {
         //rend.color = new Color(1, 1, 1, 1); //white
     }
 
-    private void CrearDisparo()
+    private void CrearDisparo(float posX, float posY, float posZ, Vector3 target)
     {
-        Instantiate(disparo, shotSpawn.position, shotSpawn.rotation);
+        Debug.Log("posX: " + target.x.ToString() + " - posY: " + target.x.ToString() + " - posZ: " + target.z.ToString());
+
+        //Instantiate(disparo, trans.position, trans.rotation);
+        //Instantiate(disparo, transform.position, transform.rotation);
+        GameObject DisparoCopia = Instantiate(disparo);
+        //rotation.z
+        //DisparoCopia.transform.Rotate(0, 45, 0, Space.World);
+        //DisparoCopia.transform.Rotate(0, 0, -90);
+        //DisparoCopia.transform.rotation = Quaternion.Euler(posX,0,0);
+        //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //DisparoCopia.transform.position = Vector3.MoveTowards(DisparoCopia.transform.position, target, speed * Time.deltaTime);
+        Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
+        //rb.velocity = target;
+        rb.AddForce(target * speed, ForceMode2D.Impulse);
     }
 }

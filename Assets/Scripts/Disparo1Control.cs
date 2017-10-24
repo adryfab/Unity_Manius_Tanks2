@@ -6,14 +6,14 @@ public class Disparo1Control : MonoBehaviour {
 
     public float velocity = 3f;
 
-    private Rigidbody2D rg2d;
+    //private Rigidbody2D rg2d;
     private SpriteRenderer rend;
 
     // Use this for initialization
     void Start ()
     {
-        rg2d = this.GetComponent<Rigidbody2D>();
-        rg2d.velocity = Vector2.left * velocity;
+        //rg2d = this.GetComponent<Rigidbody2D>();
+        //rg2d.velocity = Vector2.left * velocity;
         rend = this.GetComponent<SpriteRenderer>();
         CambiarColorDisparo();
     }
