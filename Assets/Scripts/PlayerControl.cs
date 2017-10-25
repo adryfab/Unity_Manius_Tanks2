@@ -76,6 +76,7 @@ public class PlayerControl : MonoBehaviour {
             CrossPlatformInputManager.GetAxis("Vertical")) * speed;
         myBody.AddForce(moveVec);
 
+        //***Disparo***
         Vector3 target;
         Vector3 mouseDir;
         if (Input.GetButtonDown("Fire1"))
@@ -88,7 +89,7 @@ public class PlayerControl : MonoBehaviour {
         }
         else if (Input.touchCount > 0)
         {
-            target = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            target = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position); //***
             target.z = transform.position.z;
             mouseDir = target - gameObject.transform.position;
             mouseDir = mouseDir.normalized;
@@ -117,6 +118,5 @@ public class PlayerControl : MonoBehaviour {
         GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * speed, ForceMode2D.Impulse);
-        //rb.velocity = target;
     }
 }
