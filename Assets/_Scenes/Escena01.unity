@@ -1334,8 +1334,8 @@ GameObject:
   - component: {fileID: 2131665125}
   - component: {fileID: 2131665127}
   - component: {fileID: 2131665128}
-  - component: {fileID: 2131665129}
   - component: {fileID: 2131665130}
+  - component: {fileID: 2131665129}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1447,7 +1447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 9
   disparo: {fileID: 1572929558479342, guid: 406df6a11d963cd4caf4719ad8815428, type: 2}
-  trans: {fileID: 0}
+  trans: {fileID: 819224766}
 --- !u!95 &2131665130
 Animator:
   serializedVersion: 3
