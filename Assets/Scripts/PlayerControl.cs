@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
 
     public float speed = 10;
     public GameObject disparo;
     public Transform trans;
+    public int vida = 3;
+    public Text txt;
+    public Slider slider;
 
     private Rigidbody2D myBody;
     private Animator anim;
@@ -30,10 +34,9 @@ public class PlayerControl : MonoBehaviour {
     }
 
     void Update()
-    {        
-        playerMoving = false;
-
+    {
         //***GamePad***
+        playerMoving = false;
         if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
         {
             playerMoving = true;
@@ -46,14 +49,17 @@ public class PlayerControl : MonoBehaviour {
         }
         anim.SetFloat("MoveX", CrossPlatformInputManager.GetAxis("Horizontal"));
         anim.SetFloat("MoveY", CrossPlatformInputManager.GetAxis("Vertical"));
-
-        //***Ambos***
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
 
+        //***Disparar***
         scriptDisparo.colorDisparo = colorPlayer;
         Disparar();
+
+        //***Vida***
+        txt.text = vida.ToString();
+        slider.value = vida;
     }
 
     private void FixedUpdate()
@@ -81,7 +87,7 @@ public class PlayerControl : MonoBehaviour {
         //rend.color = new Color(1, 1, 1, 1); //white
     }
 
-    private void CrearDisparo(float posX, float posY, float posZ, Vector3 target)
+    private void CrearDisparo(Vector3 target)
     {
         GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
@@ -99,7 +105,7 @@ public class PlayerControl : MonoBehaviour {
             target.z = transform.position.z;
             mouseDir = target - gameObject.transform.position;
             mouseDir = mouseDir.normalized;
-            CrearDisparo(target.x, target.y, target.z, mouseDir);
+            CrearDisparo(mouseDir);
         }
         else if (Input.touchCount > 0)
         {
@@ -107,7 +113,19 @@ public class PlayerControl : MonoBehaviour {
             target.z = transform.position.z;
             mouseDir = target - gameObject.transform.position;
             mouseDir = mouseDir.normalized;
-            CrearDisparo(target.x, target.y, target.z, mouseDir);
+            CrearDisparo(mouseDir);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Disparo")
+        {
+            vida = vida - 1;
+            if (vida < 0)
+            {
+                vida = 0;
+            }
         }
     }
 }
