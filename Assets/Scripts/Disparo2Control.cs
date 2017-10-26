@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Disparo1Control : MonoBehaviour {
+public class Disparo2Control : MonoBehaviour
+{
 
     public float velocity = 3f;
 
@@ -21,19 +22,10 @@ public class Disparo1Control : MonoBehaviour {
         CambiarColorDisparo();
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.name != "Enemy" && collision.name != "DisparoEnemy")
-        {
-            Destroy(gameObject);
-        }
-    }
+		
+	}
 
     private void CambiarColorDisparo()
     {
@@ -49,5 +41,13 @@ public class Disparo1Control : MonoBehaviour {
         //rend.color = new Color(0, 1, 0, 1); //green
         //rend.color = new Color(1, 0, 1, 1); //magenta
         rend.color = new Color(1, 1, 1, 1); //white
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

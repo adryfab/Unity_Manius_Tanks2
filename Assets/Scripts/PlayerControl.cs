@@ -18,8 +18,8 @@ public class PlayerControl : MonoBehaviour {
     private bool playerMoving;
     private Vector2 lastMove;
     private SpriteRenderer rend;
-    private Color colorPlayer;
-    private Disparo1Control scriptDisparo;
+    //private Color colorPlayer;
+    //private Disparo1Control scriptDisparo;
 
     void Start()
     {
@@ -29,8 +29,8 @@ public class PlayerControl : MonoBehaviour {
         trans = GameObject.Find("Disparo").transform;
         CambiarColorPlayer();
         rend = this.GetComponent<SpriteRenderer>();
-        scriptDisparo = disparo.GetComponent<Disparo1Control>();
-        colorPlayer = rend.color;
+        //scriptDisparo = disparo.GetComponent<Disparo1Control>();
+        //colorPlayer = rend.color;
     }
 
     void Update()
@@ -54,7 +54,7 @@ public class PlayerControl : MonoBehaviour {
         anim.SetFloat("LastMoveY", lastMove.y);
 
         //***Disparar***
-        scriptDisparo.colorDisparo = colorPlayer;
+        //scriptDisparo.colorDisparo = colorPlayer;
         Disparar();
 
         //***Vida***

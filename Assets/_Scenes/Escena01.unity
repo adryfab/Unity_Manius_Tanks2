@@ -1068,6 +1068,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 819224766}
+  - component: {fileID: 819224767}
   m_Layer: 0
   m_Name: Disparo
   m_TagString: Player
@@ -1088,6 +1089,21 @@ Transform:
   m_Father: {fileID: 2131665126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &819224767
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819224765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &1047101425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1624,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1774255635}
+  - component: {fileID: 1774255636}
   m_Layer: 0
   m_Name: DisparoEnemy
   m_TagString: Enemy
@@ -1628,6 +1645,21 @@ Transform:
   m_Father: {fileID: 2026727179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1774255636
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774255634}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &1781440549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2356,6 @@ GameObject:
   - component: {fileID: 2131665125}
   - component: {fileID: 2131665127}
   - component: {fileID: 2131665128}
-  - component: {fileID: 2131665131}
   - component: {fileID: 2131665130}
   - component: {fileID: 2131665129}
   m_Layer: 0
@@ -2437,7 +2468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
-  disparo: {fileID: 1572929558479342, guid: 406df6a11d963cd4caf4719ad8815428, type: 2}
+  disparo: {fileID: 1935623170859722, guid: 3cd0862871f6ee5459f145da6a1ce20e, type: 2}
   trans: {fileID: 819224766}
   vida: 3
   txt: {fileID: 1992570306}
@@ -2459,21 +2490,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!58 &2131665131
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2131665124}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.28
 --- !u!1 &2134199000
 GameObject:
   m_ObjectHideFlags: 0

@@ -86,4 +86,12 @@ public class EnemyControl : MonoBehaviour
         //rend.color = new Color(1, 1, 1, 1); //white
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "DisparoPlayer")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }

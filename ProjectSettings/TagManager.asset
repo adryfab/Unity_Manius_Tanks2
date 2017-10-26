@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - Obstaculos
   - Disparo
+  - DisparoPlayer
   layers:
   - Default
   - TransparentFX
