@@ -878,6 +878,9 @@ GameObject:
   - component: {fileID: 1047101428}
   - component: {fileID: 1047101427}
   - component: {fileID: 1047101426}
+  - component: {fileID: 1047101430}
+  - component: {fileID: 1047101431}
+  - component: {fileID: 1047101432}
   m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
@@ -962,6 +965,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1047101430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1047101425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 226514780, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Interest
+  Static: 0
+  Layers: []
+  GameObjects:
+  - {fileID: 2131665124}
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+--- !u!114 &1047101431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1047101425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 226514780, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Danger
+  Static: 0
+  Layers: []
+  GameObjects:
+  - {fileID: 201730749}
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+--- !u!114 &1047101432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1047101425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1274429404, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Environments:
+  - {fileID: 1047101430}
+  - {fileID: 1047101431}
+  SpatialPartition: 0
+  RegularGrid:
+    CellCountX: 16
+    CellCountY: 16
+    CellCountZ: 16
+    CellSizeX: 8
+    CellSizeY: 8
+    CellSizeZ: 8
+    GridGizmo:
+      Enabled: 1
+      Outline: 0
+      Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 0.19607843}
+  environmentFoldout: 0
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
 --- !u!1 &1214937695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1256,12 @@ GameObject:
   - component: {fileID: 2026727182}
   - component: {fileID: 2026727180}
   - component: {fileID: 2026727183}
+  - component: {fileID: 2026727184}
+  - component: {fileID: 2026727185}
+  - component: {fileID: 2026727186}
+  - component: {fileID: 2026727187}
+  - component: {fileID: 2026727189}
+  - component: {fileID: 2026727188}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1274,7 +1360,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2026727182
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1301,10 +1387,237 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709aa95401f30c04baec5c2df9dfe9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2131665126}
-  MoveSpeed: 4
-  MaxDist: 20
-  MinDist: 1
+  MoveSpeed: 1
+--- !u!114 &2026727184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1225004217, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateFrequency: 20
+  Threaded: 0
+  SensorShared: 1
+  Sensor: {fileID: 11400000, guid: 01699ce8c9811bc46b1dceb3419ee3b3, type: 2}
+  objectiveLabels:
+  - Interest
+  - Danger
+  context:
+    minObjectives: 0001
+    normObjectives: 0101
+    constraintSolver:
+      Unlimited: 0
+      Epsilons:
+      - 0
+      - 0.4
+  selfObject: {fileID: 0}
+  indicatorGizmo:
+    Enabled: 1
+    Wireframe: 0
+    ShowReceptors: 1
+    ShowConstraints: 0
+    DrawDoubleSided: 1
+    ResolutionThreshold: 32
+    CustomScale: 1
+    Spacing: 1
+    SolutionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    InterpolatedSolutionColor: {r: 1, g: 0.6, b: 0.011764706, a: 1}
+    ConstraintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    ReceptorColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+    LineColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+    ObjectiveColors:
+    - {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+    - {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
+    - {r: 0.39215687, g: 0.62352943, b: 0.8392157, a: 1}
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  objectiveFoldout: 1
+--- !u!114 &2026727185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 336943168, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  environmentFoldout: 0
+  SteeringPerceiver: {fileID: 1047101432}
+  ObjectTag: Untagged
+  Range: -1
+  rangeGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+--- !u!114 &2026727186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1062805814, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: Seek Interest
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Interest
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  radiusSteeringFoldout: 1
+  Seek:
+    TargetObjective: 0
+    MagnitudeMultiplier: 1
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 0
+    OuterRadius: 20
+    RadiusMapping: 2
+    ForEachReceptor: 0
+--- !u!114 &2026727187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1062805814, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 0
+  Label: Seek Danger
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments:
+  - Danger
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  innerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.59607846, g: 1, b: 0.5686275, a: 1}
+  outerRadiusGizmo:
+    Enabled: 0
+    Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+  radiusSteeringFoldout: 1
+  Seek:
+    TargetObjective: 1
+    MagnitudeMultiplier: 1
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+    InnerRadius: 0
+    OuterRadius: 20
+    RadiusMapping: 2
+    ForEachReceptor: 0
+--- !u!114 &2026727188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -561398845, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 2000
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  PlanarInterpolation:
+    TargetObjective: 0
+    Constraint: 1
+--- !u!114 &2026727189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026727177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1187903073, guid: e915c74e1c72d7449bcfaa622335b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 1000
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  Stabilization:
+    TargetObjective: 0
+    AngleMapping: 2
+    MaxIncrease: 0.2
+    MaxAngle: 45
 --- !u!1 &2033127345
 GameObject:
   m_ObjectHideFlags: 0

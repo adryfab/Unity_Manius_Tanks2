@@ -28,20 +28,6 @@ public class PlayerControl : MonoBehaviour {
     {        
         playerMoving = false;
 
-        ////***Teclado***
-        //if (Input.GetAxis("Horizontal") != 0)
-        //{
-        //    playerMoving = true;
-        //    lastMove = new Vector2(Input.GetAxis("Horizontal"), 0f);
-        //}
-        //if (Input.GetAxis("Vertical") != 0)
-        //{
-        //    playerMoving = true;
-        //    lastMove = new Vector2(0f, Input.GetAxis("Vertical"));
-        //}
-        //anim.SetFloat("MoveX", Input.GetAxis("Horizontal"));
-        //anim.SetFloat("MoveY", Input.GetAxis("Vertical"));
-
         //***GamePad***
         if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
         {
@@ -68,11 +54,6 @@ public class PlayerControl : MonoBehaviour {
     {
         Vector2 moveVec;
 
-        ////***Teclado***
-        //moveVec = new Vector2(Input.GetAxis("Horizontal"),
-        //    Input.GetAxis("Vertical")) * speed;
-        //myBody.AddForce(moveVec);
-
         //***GamePad***
         moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 
             CrossPlatformInputManager.GetAxis("Vertical")) * speed;
@@ -96,8 +77,6 @@ public class PlayerControl : MonoBehaviour {
 
     private void CrearDisparo(float posX, float posY, float posZ, Vector3 target)
     {
-        Debug.Log("posX: " + target.x.ToString() + " - posY: " + target.x.ToString() + " - posZ: " + target.z.ToString());
-
         GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * speed, ForceMode2D.Impulse);
@@ -118,7 +97,6 @@ public class PlayerControl : MonoBehaviour {
         }
         else if (Input.touchCount > 0)
         {
-            Debug.Log("Input.touchCount: " + Input.touchCount.ToString());
             target = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position); //***
             target.z = transform.position.z;
             mouseDir = target - gameObject.transform.position;
