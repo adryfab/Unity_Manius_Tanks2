@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50073848477652208}
   m_Layer: 0
   m_Name: Disparo1
-  m_TagString: Untagged
+  m_TagString: Disparo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
