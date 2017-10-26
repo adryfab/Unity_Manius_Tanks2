@@ -1419,6 +1419,7 @@ MonoBehaviour:
   MoveSpeed: 1
   trans: {fileID: 1774255635}
   disparo: {fileID: 1572929558479342, guid: 406df6a11d963cd4caf4719ad8815428, type: 2}
+  player: {fileID: 2131665124}
 --- !u!114 &2026727184
 MonoBehaviour:
   m_ObjectHideFlags: 0

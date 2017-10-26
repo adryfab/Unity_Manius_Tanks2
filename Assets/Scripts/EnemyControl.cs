@@ -8,10 +8,13 @@ public class EnemyControl : MonoBehaviour
     public float MoveSpeed = 4; //Establecer velocidad de persecución
     public Transform trans; //De donde sale el disparo
     public GameObject disparo; //Prefab Disparo
+    public GameObject player; //Objetivo a disparar
+    public float fireRate = 0.5F;
 
     private AIMContext aimContext;
     private Rigidbody2D myBody;
     private Animator anim;
+    private float nextFire = 0.0F;
 
     void Start ()
     {
@@ -25,6 +28,11 @@ public class EnemyControl : MonoBehaviour
     {
         anim.SetFloat("MoveX", aimContext.DecidedDirection.x);
         anim.SetFloat("MoveY", aimContext.DecidedDirection.y);
+
+        if(Time.time > nextFire)
+        {
+            CrearDisparo(aimContext.DecidedDirection);
+        }
     }
 
     private void FixedUpdate()
@@ -34,15 +42,12 @@ public class EnemyControl : MonoBehaviour
         myBody.AddForce(moveVec);
     }
 
-    private void CrearDisparo(float posX, float posY, float posZ, Vector3 target)
+    private void CrearDisparo(Vector3 target)
     {
         GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * MoveSpeed, ForceMode2D.Impulse);
+        nextFire = Time.time + fireRate;
     }
 
-    private void Disparar()
-    {
-
-    }
 }
