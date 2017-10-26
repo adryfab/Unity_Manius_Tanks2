@@ -31,7 +31,7 @@ public class EnemyControl : MonoBehaviour
 
         if(Time.time > nextFire)
         {
-            CrearDisparo(aimContext.DecidedDirection);
+            Disparar();
         }
     }
 
@@ -48,6 +48,19 @@ public class EnemyControl : MonoBehaviour
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * MoveSpeed, ForceMode2D.Impulse);
         nextFire = Time.time + fireRate;
+    }
+
+    private void Disparar()
+    {
+        Vector3 target;
+        Vector3 mouseDir;
+
+        target = player.transform.position;
+        target.z = transform.position.z;
+        mouseDir = target - gameObject.transform.position;
+        mouseDir = mouseDir.normalized;
+        CrearDisparo(mouseDir);
+
     }
 
 }
