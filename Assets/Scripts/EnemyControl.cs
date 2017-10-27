@@ -10,6 +10,7 @@ public class EnemyControl : MonoBehaviour
     public GameObject disparo; //Prefab Disparo
     public GameObject player; //Objetivo a disparar
     public float fireRate = 0.5F;
+    public GameObject game;
 
     private AIMContext aimContext;
     private Rigidbody2D myBody;
@@ -92,6 +93,7 @@ public class EnemyControl : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            game.SendMessage("finJuego", "Ganó!!!");
         }
     }
 }

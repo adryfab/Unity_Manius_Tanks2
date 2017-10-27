@@ -12,14 +12,13 @@ public class PlayerControl : MonoBehaviour {
     public int vida = 3;
     public Text txt;
     public Slider slider;
+    public GameObject game;
 
     private Rigidbody2D myBody;
     private Animator anim;
     private bool playerMoving;
     private Vector2 lastMove;
     private SpriteRenderer rend;
-    //private Color colorPlayer;
-    //private Disparo1Control scriptDisparo;
 
     void Start()
     {
@@ -54,12 +53,12 @@ public class PlayerControl : MonoBehaviour {
         anim.SetFloat("LastMoveY", lastMove.y);
 
         //***Disparar***
-        //scriptDisparo.colorDisparo = colorPlayer;
         Disparar();
 
         //***Vida***
         txt.text = vida.ToString();
         slider.value = vida;
+        Vida();
     }
 
     private void FixedUpdate()
@@ -126,6 +125,15 @@ public class PlayerControl : MonoBehaviour {
             {
                 vida = 0;
             }
+        }
+    }
+
+    private void Vida()
+    {
+        if (vida <= 0)
+        {
+            gameObject.SetActive(false);
+            game.SendMessage("finJuego", "Perdió!!!");
         }
     }
 }
