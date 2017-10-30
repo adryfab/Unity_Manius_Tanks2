@@ -10,13 +10,17 @@ public class GameControl : MonoBehaviour
     public Canvas cvnFin;
     public Text txtFin;
 
-	void Start ()
+    private EnemyControl enemyCtr;
+
+    void Start ()
     {
         btnReinicio.onClick.AddListener(clickReinicio);
+        enemyCtr = FindObjectOfType<EnemyControl>();
     }
-	
-	void Update ()
+
+    void Update ()
     {
+		//***Saliendo del juego***
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Application.platform == RuntimePlatform.Android)
@@ -30,6 +34,12 @@ public class GameControl : MonoBehaviour
             }
         }
 
+        //***Finalizando juego***        
+        enemyCtr = FindObjectOfType<EnemyControl>();
+		if (enemyCtr == null) 
+		{
+			finJuego ("Ganaste!!!");
+		}
     }
 
     public void clickReinicio()
@@ -39,7 +49,6 @@ public class GameControl : MonoBehaviour
 
     public void finJuego(string mensaje)
     {
-        //btnReinicio.gameObject.SetActive(true);
         cvnFin.gameObject.SetActive(true);
         txtFin.text = mensaje;
     }

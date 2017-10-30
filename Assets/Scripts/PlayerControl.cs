@@ -28,8 +28,6 @@ public class PlayerControl : MonoBehaviour {
         trans = GameObject.Find("Disparo").transform;
         CambiarColorPlayer();
         rend = this.GetComponent<SpriteRenderer>();
-        //scriptDisparo = disparo.GetComponent<Disparo1Control>();
-        //colorPlayer = rend.color;
     }
 
     void Update()
@@ -133,7 +131,7 @@ public class PlayerControl : MonoBehaviour {
         if (vida <= 0)
         {
             gameObject.SetActive(false);
-            game.SendMessage("finJuego", "Perdió!!!");
+            game.SendMessage("finJuego", "Perdiste!!!");
         }
     }
 }

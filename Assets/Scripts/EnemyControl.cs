@@ -39,7 +39,6 @@ public class EnemyControl : MonoBehaviour
 
         if(Time.time > nextFire)
         {
-            //Debug.Log("EnemyControl - " + colorEnemigo);
             scriptDisparo.colorDisparo = colorEnemigo;
             Disparar();
         }
@@ -93,7 +92,7 @@ public class EnemyControl : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
-            game.SendMessage("finJuego", "Ganó!!!");
+            //game.SendMessage("finJuego", "Ganaste!!!");
         }
     }
 }

@@ -445,6 +445,7 @@ MonoBehaviour:
   btnReinicio: {fileID: 1151635434}
   cvnFin: {fileID: 484764396}
   txtFin: {fileID: 245021124}
+  enemy: {fileID: 1638010547900868, guid: 4de8aec8f96213d438ff74b79630d253, type: 2}
 --- !u!224 &362684451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1986,6 +1987,12 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114701331032946738, guid: 328b297cf0833da4b8aaa11db4a1bddd,
+        type: 2}
+      propertyPath: enemigo
+      value: 
+      objectReference: {fileID: 1638010547900868, guid: 4de8aec8f96213d438ff74b79630d253,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 328b297cf0833da4b8aaa11db4a1bddd, type: 2}
   m_IsPrefabParent: 0
