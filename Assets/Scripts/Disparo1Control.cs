@@ -21,7 +21,6 @@ public class Disparo1Control : MonoBehaviour {
         CambiarColorDisparo();
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         
@@ -29,7 +28,7 @@ public class Disparo1Control : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "Enemy" && collision.name != "DisparoEnemy")
+        if (collision.tag != "Enemy" && collision.tag != "Disparo")
         {
             Destroy(gameObject);
         }

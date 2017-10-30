@@ -6,7 +6,7 @@ using Polarith.AI.Move;
 public class EnemyControl : MonoBehaviour
 {
     public float MoveSpeed = 4; //Establecer velocidad de persecución
-    public Transform trans; //De donde sale el disparo (hijo)
+    //public Transform trans; //De donde sale el disparo (hijo)
     public GameObject disparo; //Prefab Disparo
     public GameObject player; //Objetivo a disparar
     public float fireRate = 0.5F;
@@ -17,8 +17,6 @@ public class EnemyControl : MonoBehaviour
     private Animator anim;
     private float nextFire = 0.0F;
     private SpriteRenderer rend;
-    private Color colorEnemigo;
-    private Disparo1Control scriptDisparo;
 
     void Start ()
     {
@@ -27,25 +25,25 @@ public class EnemyControl : MonoBehaviour
         aimContext = this.GetComponent<AIMContext>();
         rend = this.GetComponent<SpriteRenderer>();
         CambiarColorEnemy();
-        trans = GameObject.Find("DisparoEnemy").transform;
-        scriptDisparo = disparo.GetComponent<Disparo1Control>();
-        colorEnemigo = rend.color;
+        //trans = GameObject.Find("DisparoEnemy").transform;
     }
 
     void Update ()
     {
+        //***Mover automaticamente al enemigo - animacion ***
         anim.SetFloat("MoveX", aimContext.DecidedDirection.x);
         anim.SetFloat("MoveY", aimContext.DecidedDirection.y);
 
+        //*** Disparar ***
         if(Time.time > nextFire)
         {
-            scriptDisparo.colorDisparo = colorEnemigo;
             Disparar();
         }
     }
 
     private void FixedUpdate()
     {
+        //***Mover automaticamente al enemigo ***
         Vector2 moveVec;
         moveVec = new Vector2(aimContext.DecidedDirection.x, aimContext.DecidedDirection.y) * MoveSpeed;
         myBody.AddForce(moveVec);
@@ -53,7 +51,8 @@ public class EnemyControl : MonoBehaviour
 
     private void CrearDisparo(Vector3 target)
     {
-        GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
+        //GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
+        GameObject DisparoCopia = Instantiate(disparo, transform.position, transform.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * MoveSpeed, ForceMode2D.Impulse);
         nextFire = Time.time + fireRate;
@@ -68,6 +67,7 @@ public class EnemyControl : MonoBehaviour
         target.z = transform.position.z;
         mouseDir = target - this.transform.position;
         mouseDir = mouseDir.normalized;
+        //Debug.Log(mouseDir);
         CrearDisparo(mouseDir);
 
     }
@@ -92,7 +92,6 @@ public class EnemyControl : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
-            //game.SendMessage("finJuego", "Ganaste!!!");
         }
     }
 }
