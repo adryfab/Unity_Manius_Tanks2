@@ -38,7 +38,7 @@ public class GameControl : MonoBehaviour
         enemyCtr = FindObjectOfType<EnemyControl>();
 		if (enemyCtr == null) 
 		{
-			finJuego ("Ganaste!!!");
+			finJuego (true);
 		}
     }
 
@@ -47,9 +47,10 @@ public class GameControl : MonoBehaviour
         SceneManager.LoadScene("Escena01");
     }
 
-    public void finJuego(string mensaje)
+    public void finJuego(bool gana)
     {
-        cvnFin.gameObject.SetActive(true);
-        txtFin.text = mensaje;
+        ProjectVars.Instance.ganoEscena = gana;
+        ProjectVars.Instance.newScene = 2;
+        SceneManager.LoadScene("FinEscena");
     }
 }

@@ -18,7 +18,7 @@ public class MenuGameControl : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Escena01");
+        SceneManager.LoadScene("Escena1");
     }
 
 }

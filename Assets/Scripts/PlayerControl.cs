@@ -66,8 +66,7 @@ public class PlayerControl : MonoBehaviour {
         //***GamePad***
         moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 
             CrossPlatformInputManager.GetAxis("Vertical")) * speed;
-        myBody.AddForce(moveVec);
-        
+        myBody.AddForce(moveVec);        
     }
 
     private void CambiarColorPlayer()
@@ -131,7 +130,7 @@ public class PlayerControl : MonoBehaviour {
         if (vida <= 0)
         {
             gameObject.SetActive(false);
-            game.SendMessage("finJuego", "Perdiste!!!");
+            game.SendMessage("finJuego", false);
         }
     }
 }
