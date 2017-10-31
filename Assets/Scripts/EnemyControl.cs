@@ -6,7 +6,6 @@ using Polarith.AI.Move;
 public class EnemyControl : MonoBehaviour
 {
     public float MoveSpeed = 4; //Establecer velocidad de persecución
-    //public Transform trans; //De donde sale el disparo (hijo)
     public GameObject disparo; //Prefab Disparo
     public GameObject player; //Objetivo a disparar
     public float fireRate = 0.5F;
@@ -25,7 +24,6 @@ public class EnemyControl : MonoBehaviour
         aimContext = this.GetComponent<AIMContext>();
         rend = this.GetComponent<SpriteRenderer>();
         CambiarColorEnemy();
-        //trans = GameObject.Find("DisparoEnemy").transform;
     }
 
     void Update ()
@@ -51,7 +49,6 @@ public class EnemyControl : MonoBehaviour
 
     private void CrearDisparo(Vector3 target)
     {
-        //GameObject DisparoCopia = Instantiate(disparo, trans.position, trans.rotation);
         GameObject DisparoCopia = Instantiate(disparo, transform.position, transform.rotation);
         Rigidbody2D rb = DisparoCopia.GetComponent<Rigidbody2D>();
         rb.AddForce(target * MoveSpeed, ForceMode2D.Impulse);
@@ -67,7 +64,6 @@ public class EnemyControl : MonoBehaviour
         target.z = transform.position.z;
         mouseDir = target - this.transform.position;
         mouseDir = mouseDir.normalized;
-        //Debug.Log(mouseDir);
         CrearDisparo(mouseDir);
 
     }
@@ -75,12 +71,12 @@ public class EnemyControl : MonoBehaviour
     private void CambiarColorEnemy()
     {
         //rend.color = new Color(1, 1, 0, 1); //yellow
-        rend.color = new Color(0, 0, 1, 1); //blue
+        //rend.color = new Color(0, 0, 1, 1); //blue
         //rend.color = new Color(1, 0, 0, 1); //red
         //rend.color = new Color(0, 0, 0, 1); //black
         //rend.color = new Color(0, 0, 0, 0); //clear
         //rend.color = new Color(0, 1, 1, 1); //cyan
-        //rend.color = new Color(0.5f, 0.5f, 0.5f, 1); //gray
+        rend.color = new Color(0.5f, 0.5f, 0.5f, 1); //gray
         //rend.color = new Color(0, 1, 0, 1); //green
         //rend.color = new Color(1, 0, 1, 1); //magenta
         //rend.color = new Color(1, 1, 1, 1); //white
