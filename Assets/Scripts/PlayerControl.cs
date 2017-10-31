@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
+using CnControls;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -32,20 +33,6 @@ public class PlayerControl : MonoBehaviour {
 
     void Update()
     {
-        //***GamePad***
-        playerMoving = false;
-        if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
-        {
-            playerMoving = true;
-            lastMove = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0f); 
-        }
-        if (CrossPlatformInputManager.GetAxis("Vertical") > 0.5f || CrossPlatformInputManager.GetAxis("Vertical") < -0.5f)
-        {
-            playerMoving = true;
-            lastMove = new Vector2(0f, CrossPlatformInputManager.GetAxis("Vertical"));
-        }
-        anim.SetFloat("MoveX", CrossPlatformInputManager.GetAxis("Horizontal"));
-        anim.SetFloat("MoveY", CrossPlatformInputManager.GetAxis("Vertical"));
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
@@ -59,14 +46,54 @@ public class PlayerControl : MonoBehaviour {
         Vida();
     }
 
-    private void FixedUpdate()
+    private void Mover_MobileSingleStickControl()
     {
         Vector2 moveVec;
-
-        //***GamePad***
-        moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 
+        moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"),
             CrossPlatformInputManager.GetAxis("Vertical")) * speed;
-        myBody.AddForce(moveVec);        
+        myBody.AddForce(moveVec);
+
+        playerMoving = false;
+        if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.5f || CrossPlatformInputManager.GetAxis("Horizontal") < -0.5f)
+        {
+            playerMoving = true;
+            lastMove = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0f);
+        }
+        if (CrossPlatformInputManager.GetAxis("Vertical") > 0.5f || CrossPlatformInputManager.GetAxis("Vertical") < -0.5f)
+        {
+            playerMoving = true;
+            lastMove = new Vector2(0f, CrossPlatformInputManager.GetAxis("Vertical"));
+        }
+        anim.SetFloat("MoveX", CrossPlatformInputManager.GetAxis("Horizontal"));
+        anim.SetFloat("MoveY", CrossPlatformInputManager.GetAxis("Vertical"));
+    }
+    
+    private void Mover_SensitiveJoystick()
+    {
+        Vector2 moveVec;
+        moveVec = new Vector2(CnInputManager.GetAxis("Horizontal"),
+            CnInputManager.GetAxis("Vertical")) * speed;
+        myBody.AddForce(moveVec);
+
+        playerMoving = false;
+        if (CnInputManager.GetAxis("Horizontal") > 0.5f || CnInputManager.GetAxis("Horizontal") < -0.5f)
+        {
+            playerMoving = true;
+            lastMove = new Vector2(CnInputManager.GetAxis("Horizontal"), 0f);
+        }
+        if (CnInputManager.GetAxis("Vertical") > 0.5f || CnInputManager.GetAxis("Vertical") < -0.5f)
+        {
+            playerMoving = true;
+            lastMove = new Vector2(0f, CnInputManager.GetAxis("Vertical"));
+        }
+        anim.SetFloat("MoveX", CnInputManager.GetAxis("Horizontal"));
+        anim.SetFloat("MoveY", CnInputManager.GetAxis("Vertical"));
+    }
+
+    private void FixedUpdate()
+    {
+        //Mover_MobileSingleStickControl();
+        Mover_SensitiveJoystick();
     }
 
     private void CambiarColorPlayer()
