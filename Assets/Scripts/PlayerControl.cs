@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour {
     public Text txt;
     public Slider slider;
     public GameObject game;
+    public Color PlayerColor;
 
     private Rigidbody2D myBody;
     private Animator anim;
@@ -27,8 +28,7 @@ public class PlayerControl : MonoBehaviour {
         anim = this.GetComponent<Animator>();
         rend = this.GetComponent<SpriteRenderer>();
         trans = GameObject.Find("Disparo").transform;
-        CambiarColorPlayer();
-        rend = this.GetComponent<SpriteRenderer>();
+        CambiarColorPlayer(ProjectVars.Instance.PlayerColor);
     }
 
     void Update()
@@ -96,9 +96,17 @@ public class PlayerControl : MonoBehaviour {
         Mover_SensitiveJoystick();
     }
 
-    private void CambiarColorPlayer()
+    private void CambiarColorPlayer(Color plColor)
     {
-        rend.color = new Color(1, 1, 0, 1); //yellow
+        if (plColor.a == 0 && plColor.b == 0 && plColor.g == 0 && plColor.r == 0)
+        {
+            rend.color = new Color(1, 1, 0, 1); //yellow
+        }
+        else
+        {
+            rend.color = plColor;
+        }
+        //rend.color = new Color(1, 1, 0, 1); //yellow
         //rend.color = new Color(0, 0, 1, 1); //blue
         //rend.color = new Color(1, 0, 0, 1); //red
         //rend.color = new Color(0, 0, 0, 1); //black

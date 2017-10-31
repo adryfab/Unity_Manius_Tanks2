@@ -7,6 +7,7 @@ public class ProjectVars : Singleton<ProjectVars> {
 	public string StringActiveBetweenScenes;
     public bool ganoEscena;
     public int newScene;
+    public Color PlayerColor;
 
 	public static ProjectVars Instance {
 		get {

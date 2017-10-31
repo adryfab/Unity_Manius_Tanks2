@@ -21,4 +21,8 @@ public class MenuGameControl : MonoBehaviour
         SceneManager.LoadScene("Escena1");
     }
 
+    public void Color()
+    {
+        SceneManager.LoadScene("Config");
+    }
 }

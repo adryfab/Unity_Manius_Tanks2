@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/FinEscena.unity
     guid: c4552a592266b2247be778508d3d21de
+  - enabled: 1
+    path: Assets/_Scenes/Config.unity
+    guid: 05edcffd41ee23b499eee5002805af9b
