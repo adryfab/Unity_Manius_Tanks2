@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameControl : MonoBehaviour
 {
+    public Text timer;
+
     private EnemyControl enemyCtr;
+    private int TiempoEscena;
+    private float timeLeft;
 
     void Start ()
     {
         enemyCtr = FindObjectOfType<EnemyControl>();
+        TiempoEscena = Int32.Parse(timer.text);
+        timeLeft = TiempoEscena;
     }
 
     void Update ()
@@ -35,6 +42,9 @@ public class GameControl : MonoBehaviour
 		{
 			finJuego (true);
 		}
+
+        //***Actualizando el tiempo restante***
+        ActualizarTiempo();
     }
 
     public void clickReinicio()
@@ -52,5 +62,16 @@ public class GameControl : MonoBehaviour
         }
         ProjectVars.Instance.newScene = escenaActual + 1;
         SceneManager.LoadScene("FinEscena");
+    }
+
+    private void ActualizarTiempo()
+    {
+        timeLeft -= Time.deltaTime;
+        TiempoEscena = (int)timeLeft;
+        timer.text = TiempoEscena.ToString();
+        if (TiempoEscena <= 0)
+        {
+            finJuego(false);
+        }
     }
 }
