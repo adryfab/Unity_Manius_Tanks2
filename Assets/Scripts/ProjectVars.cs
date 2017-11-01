@@ -10,6 +10,7 @@ public class ProjectVars : Singleton<ProjectVars> {
     public int maxScene = 4;
     public Color PlayerColor;
     public int tiempoGanador;
+    public bool premioRecogido;
 
 	public static ProjectVars Instance {
 		get {

@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PremioControl : MonoBehaviour
 {
-    public Image premio;
-    
+
 	void Start ()
     {
 		
@@ -19,9 +17,10 @@ public class PremioControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "DisparoPlayer")
+        if (collision.tag == "Player")
         {
-            premio.gameObject.SetActive(true);
+            ProjectVars.Instance.premioRecogido = true;
+            Destroy(gameObject);
         }
     }
 }
