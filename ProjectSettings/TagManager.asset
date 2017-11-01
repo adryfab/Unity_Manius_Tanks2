@@ -9,6 +9,8 @@ TagManager:
   - Obstaculos
   - Disparo
   - DisparoPlayer
+  - Premio
+  - Piedra
   layers:
   - Default
   - TransparentFX
