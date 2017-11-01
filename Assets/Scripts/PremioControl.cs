@@ -21,7 +21,7 @@ public class PremioControl : MonoBehaviour
     {
         if (collision.tag == "DisparoPlayer")
         {
-            
+            premio.gameObject.SetActive(true);
         }
     }
 }
