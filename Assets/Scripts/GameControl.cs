@@ -36,11 +36,13 @@ public class GameControl : MonoBehaviour
             }
         }
 
-        //***Finalizando juego***        
+        //***Finalizando juego - Ya no hay enemigos***        
         enemyCtr = FindObjectOfType<EnemyControl>();
 		if (enemyCtr == null) 
 		{
-			finJuego (true);
+            //***Ganó el juego***
+            ProjectVars.Instance.tiempoGanador = TiempoEscena; //***Tiempo que tomó en ganar***
+            finJuego(true);
 		}
 
         //***Actualizando el tiempo restante***
@@ -71,6 +73,7 @@ public class GameControl : MonoBehaviour
         timer.text = TiempoEscena.ToString();
         if (TiempoEscena <= 0)
         {
+            //***Perdió el juego por falta de tiempo***
             finJuego(false);
         }
     }

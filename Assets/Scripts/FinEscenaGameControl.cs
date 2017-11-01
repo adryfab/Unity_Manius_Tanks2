@@ -8,6 +8,10 @@ public class FinEscenaGameControl : MonoBehaviour
 {
     public Text txtMensaje;
     public Button btnContinuar;
+    public Image medalla;
+    public Sprite MedallaBronce;
+    public Sprite MedallaPlata;
+    public Sprite MedallaOro;
 
     private int escena;
 
@@ -23,6 +27,7 @@ public class FinEscenaGameControl : MonoBehaviour
 
     public void LoadMenu()
     {
+        ProjectVars.Instance.newScene = 1;
         SceneManager.LoadScene("Menu");
     }
 
@@ -56,13 +61,35 @@ public class FinEscenaGameControl : MonoBehaviour
             }
             else
             {
+                //***Si es la ultima escena ni muestra botón de Continuar***
                 btnContinuar.gameObject.SetActive(false);
+            }
+
+            //***Muestra la medalla dependiendo del tiempo
+            int tiempo = ProjectVars.Instance.tiempoGanador;
+            if (tiempo >= 20)
+            {
+                //***Medalla de oro
+                medalla.sprite = MedallaOro;
+            }
+            else if (tiempo < 20 && tiempo >= 10)
+            {
+                //***Medalla de plata
+                medalla.sprite = MedallaPlata;
+            }
+            else if (tiempo < 10)
+            {
+                //***Medalla de bronce
+                medalla.sprite = MedallaBronce;
             }
         }
         else
         {
             txtMensaje.text = "¡Perdiste!";
             btnContinuar.gameObject.SetActive(false);
+
+            //***Muestra una medalla de perdedor
+            medalla.sprite = null;
         }
     }
 
