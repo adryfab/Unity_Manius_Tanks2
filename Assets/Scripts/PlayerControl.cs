@@ -15,12 +15,14 @@ public class PlayerControl : MonoBehaviour {
     public Slider slider;
     public GameObject game;
     public Color PlayerColor;
+    public Image life;
 
     private Rigidbody2D myBody;
     private Animator anim;
     private bool playerMoving;
     private Vector2 lastMove;
     private SpriteRenderer rend;
+    private float LifePart;
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlayerControl : MonoBehaviour {
         rend = this.GetComponent<SpriteRenderer>();
         trans = GameObject.Find("Disparo").transform;
         CambiarColorPlayer(ProjectVars.Instance.PlayerColor);
+        LifePart = 1f;
     }
 
     void Update()
@@ -167,5 +170,22 @@ public class PlayerControl : MonoBehaviour {
             gameObject.SetActive(false);
             game.SendMessage("finJuego", false);
         }
+
+        switch (vida)
+        {
+            case 0:
+                LifePart = 0.0f;
+                break;
+            case 1:
+                LifePart = 0.30f;
+                break;
+            case 2:
+                LifePart = 0.70f;
+                break;
+            case 3:
+                LifePart = 1.0f;
+                break;
+        }
+        life.fillAmount = LifePart;
     }
 }
