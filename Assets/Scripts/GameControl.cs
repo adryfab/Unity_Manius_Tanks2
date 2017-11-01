@@ -6,15 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
-    public Button btnReinicio;
-    public Canvas cvnFin;
-    public Text txtFin;
-
     private EnemyControl enemyCtr;
 
     void Start ()
     {
-        btnReinicio.onClick.AddListener(clickReinicio);
         enemyCtr = FindObjectOfType<EnemyControl>();
     }
 
@@ -50,7 +45,12 @@ public class GameControl : MonoBehaviour
     public void finJuego(bool gana)
     {
         ProjectVars.Instance.ganoEscena = gana;
-        ProjectVars.Instance.newScene = 2;
+        int escenaActual = ProjectVars.Instance.newScene;
+        if (escenaActual == 0)
+        {
+            escenaActual = 1;
+        }
+        ProjectVars.Instance.newScene = escenaActual + 1;
         SceneManager.LoadScene("FinEscena");
     }
 }

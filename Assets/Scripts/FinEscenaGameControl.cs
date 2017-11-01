@@ -9,6 +9,8 @@ public class FinEscenaGameControl : MonoBehaviour
     public Text txtMensaje;
     public Button btnContinuar;
 
+    private int escena;
+
     void Start ()
     {
         GanoEscena();
@@ -16,8 +18,8 @@ public class FinEscenaGameControl : MonoBehaviour
 	
 	void Update ()
     {
-		
-	}
+        SalirJuego();
+    }
 
     public void LoadMenu()
     {
@@ -44,10 +46,18 @@ public class FinEscenaGameControl : MonoBehaviour
     private void GanoEscena()
     {
         bool gana = ProjectVars.Instance.ganoEscena;
+        escena = ProjectVars.Instance.newScene;
         if (gana == true)
         {
             txtMensaje.text = "¡Ganaste!";
-            btnContinuar.gameObject.SetActive(true);
+            if (escena <= ProjectVars.Instance.maxScene)
+            {
+                btnContinuar.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnContinuar.gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -58,7 +68,10 @@ public class FinEscenaGameControl : MonoBehaviour
 
     public void SiguienteEscena()
     {
-        int escena = ProjectVars.Instance.newScene;
-        SceneManager.LoadScene("Escena"+escena);
+        escena = ProjectVars.Instance.newScene;
+        if (escena <= ProjectVars.Instance.maxScene)
+        {
+            SceneManager.LoadScene("Escena" + escena);
+        }
     }
 }
