@@ -8,10 +8,10 @@ public class FinEscenaGameControl : MonoBehaviour
 {
     public Text txtMensaje;
     public Button btnContinuar;
-    public Image medalla;
-    public Sprite MedallaBronce;
-    public Sprite MedallaPlata;
-    public Sprite MedallaOro;
+    //public Image medalla;
+    public GameObject MedallaBronce;
+    public GameObject MedallaPlata;
+    public GameObject MedallaOro;
 
     private int escena;
 
@@ -54,7 +54,7 @@ public class FinEscenaGameControl : MonoBehaviour
         escena = ProjectVars.Instance.newScene;
         if (gana == true)
         {
-            txtMensaje.text = "¡Ganaste!";
+            txtMensaje.text = "VICTORIA";
             if (escena <= ProjectVars.Instance.maxScene)
             {
                 btnContinuar.gameObject.SetActive(true);
@@ -70,26 +70,34 @@ public class FinEscenaGameControl : MonoBehaviour
             if (tiempo >= 20)
             {
                 //***Medalla de oro
-                medalla.sprite = MedallaOro;
+                MedallaBronce.GetComponent<Animation>().Stop();
+                MedallaPlata.GetComponent<Animation>().Stop();
+                MedallaOro.GetComponent<Animation>().Play();
             }
             else if (tiempo < 20 && tiempo >= 10)
             {
                 //***Medalla de plata
-                medalla.sprite = MedallaPlata;
+                MedallaBronce.GetComponent<Animation>().Stop();
+                MedallaPlata.GetComponent<Animation>().Play();
+                MedallaOro.GetComponent<Animation>().Stop();
             }
             else if (tiempo < 10)
             {
                 //***Medalla de bronce
-                medalla.sprite = MedallaBronce;
+                MedallaBronce.GetComponent<Animation>().Play();
+                MedallaPlata.GetComponent<Animation>().Stop();
+                MedallaOro.GetComponent<Animation>().Stop();
             }
         }
         else
         {
-            txtMensaje.text = "¡Perdiste!";
+            txtMensaje.text = "FIN DEL JUEGO";
             btnContinuar.gameObject.SetActive(false);
 
-            //***Muestra una medalla de perdedor
-            medalla.sprite = null;
+            //***Muestra una medalla de perdedor o ninguna medalla
+            MedallaBronce.SetActive(false);
+            MedallaPlata.SetActive(false);
+            MedallaOro.SetActive(false);
         }
     }
 
