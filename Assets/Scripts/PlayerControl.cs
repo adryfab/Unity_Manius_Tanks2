@@ -161,6 +161,17 @@ public class PlayerControl : MonoBehaviour {
                 vida = 0;
             }
         }
+
+        //***Recogiendo premio***
+        if (collision.tag == "Premio")
+        {
+            vida = vida + 1;
+            if (vida > 3)
+            {
+                vida = 3;
+            }
+
+        }
     }
 
     private void Vida()
