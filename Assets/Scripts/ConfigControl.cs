@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ConfigControl : MonoBehaviour
 {
     public Image imgTank;
+    public AudioSource audioGame;
 
     void Start ()
     {
@@ -69,5 +70,19 @@ public class ConfigControl : MonoBehaviour
     public void Regresar()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void AudioEncendido()
+    {
+        if (ProjectVars.Instance.AudioEncendido == true)
+        {
+            audioGame.Stop();
+            ProjectVars.Instance.AudioEncendido = false;
+        }
+        else
+        {
+            audioGame.Play();
+            ProjectVars.Instance.AudioEncendido = true;
+        }
     }
 }

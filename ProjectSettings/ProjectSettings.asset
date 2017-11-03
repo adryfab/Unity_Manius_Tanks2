@@ -73,7 +73,7 @@ PlayerSettings:
   Force IOS Speakers When Recording: 0
   submitAnalytics: 1
   usePlayerLog: 1
-  bakeCollisionMeshes: 0
+  bakeCollisionMeshes: 1
   forceSingleInstance: 0
   resizableWindow: 0
   useMacAppStoreValidation: 0
@@ -631,7 +631,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 9dac115e-1b61-4d47-ade9-56486a11347a
-  projectName: "Ma\xF1u Tanks 2"
+  projectName: Manius Tanks
   organizationId: ecuagames
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

@@ -7,6 +7,7 @@ public class Disparo2Control : MonoBehaviour
 {
 
     public float velocity = 3f;
+    public AudioSource audioGame;
 
     private SpriteRenderer rend;
 
@@ -49,6 +50,20 @@ public class Disparo2Control : MonoBehaviour
         if (collision.tag != "Player")
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void AudioEncendido()
+    {
+        if (ProjectVars.Instance.AudioEncendido == true)
+        {
+            audioGame.Stop();
+            ProjectVars.Instance.AudioEncendido = false;
+        }
+        else
+        {
+            audioGame.Play();
+            ProjectVars.Instance.AudioEncendido = true;
         }
     }
 }

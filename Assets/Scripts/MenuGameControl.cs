@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuGameControl : MonoBehaviour
 {
+    public AudioSource audioGame;
 
 	void Start ()
     {
@@ -36,5 +37,19 @@ public class MenuGameControl : MonoBehaviour
     public void Color()
     {
         SceneManager.LoadScene("Config");
+    }
+
+    public void AudioEncendido()
+    {
+        if (ProjectVars.Instance.AudioEncendido == true)
+        {
+            audioGame.Stop();
+            ProjectVars.Instance.AudioEncendido = false;
+        }
+        else
+        {
+            audioGame.Play();
+            ProjectVars.Instance.AudioEncendido = true;
+        }
     }
 }

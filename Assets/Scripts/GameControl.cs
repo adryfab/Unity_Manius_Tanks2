@@ -8,6 +8,7 @@ using System;
 public class GameControl : MonoBehaviour
 {
     public Text timer;
+    public AudioSource audioGame;
 
     private EnemyControl enemyCtr;
     private int TiempoEscena;
@@ -75,6 +76,20 @@ public class GameControl : MonoBehaviour
         {
             //***Perdió el juego por falta de tiempo***
             finJuego(false);
+        }
+    }
+
+    public void AudioEncendido()
+    {
+        if (ProjectVars.Instance.AudioEncendido == true)
+        {
+            audioGame.Stop();
+            ProjectVars.Instance.AudioEncendido = false;
+        }
+        else
+        {
+            audioGame.Play();
+            ProjectVars.Instance.AudioEncendido = true;
         }
     }
 }
