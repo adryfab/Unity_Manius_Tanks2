@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuGameControl : MonoBehaviour
 {
     public AudioSource audioGame;
+    public string SiguienteEscena;
 
 	void Start ()
     {
@@ -31,7 +32,7 @@ public class MenuGameControl : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Escena1");
+        SceneManager.LoadScene(SiguienteEscena);
     }
 
     public void Color()

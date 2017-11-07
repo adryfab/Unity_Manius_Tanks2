@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class PanelControl : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PanelControl : MonoBehaviour
     public Text DialogoTexto;
     public Image ImagenDerecha;
     public Image ImagenIzquierda;
+    public string SiguienteEscena;
 
     struct DialogueLine // The data of each line of dialogue
     {
@@ -92,6 +94,7 @@ public class PanelControl : MonoBehaviour
         else
         {
             //Salir del dialogo
+            StartGame();
         }
     }
 
@@ -123,5 +126,10 @@ public class PanelControl : MonoBehaviour
             ImagenIzquierda.gameObject.SetActive(true);
             ImagenIzquierda.sprite = ImagenIzquierda.GetComponent<Caracter>().ImagenesPersonaje[lines[lineNum].pose];
         }
+    }
+
+    private void StartGame()
+    {
+        SceneManager.LoadScene(SiguienteEscena);        
     }
 }

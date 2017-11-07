@@ -201,6 +201,7 @@ MonoBehaviour:
   DialogoTexto: {fileID: 359632355}
   ImagenDerecha: {fileID: 1828710829}
   ImagenIzquierda: {fileID: 1716286375}
+  SiguienteEscena: Escena1
 --- !u!1 &104512885
 GameObject:
   m_ObjectHideFlags: 0
