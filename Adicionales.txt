@@ -1,0 +1,39 @@
+https://es.wikipedia.org/wiki/Rango_(militar)
+https://es.wikipedia.org/wiki/Fuerzas_Armadas_del_Ecuador#Rangos
+https://es.wikipedia.org/wiki/Ej%C3%A9rcito_Ecuatoriano
+
+Oficiales
+---------
+	Generales
+	---------
+		General de Ejército
+		General de división
+		General de brigada
+
+	Superiores
+	----------
+		Coronel
+		Teniente coronel
+		Mayor = Comandante
+	
+	Subalternos
+	-----------
+		Capitán
+		Teniente
+		Subteniente
+
+Tropa
+-----
+	Suboficiales
+	------------
+		Suboficial Mayor
+		Suboficial Primero
+		Suboficial Segundo
+		
+	Clases
+	------
+		Sargento Primero
+		Sargento Segundo
+		Cabo Primero
+		Cabo Segundo
+		Soldado
