@@ -1,0 +1,9 @@
+Escena1:Personaje1:Dialogo de personaje A:0:D
+Escena1:Personaje2:Dialogo de personaje B:0:I
+Escena1:Personaje1:Otro dialogo de A:1:D
+Escena1:Personaje2:Otro dialogo de B:1:I
+Escena1:Personaje1:Más dialogos de A:2:D
+Escena1:Personaje2:Más dialogos de B:2:I
+Escena2:PP1:KKKK:0:D
+Escena2:PP2:LLL:0:I
+
