@@ -1,3 +1,10 @@
+Optimizacion
+------------
+https://docs.unity3d.com/es/current/Manual/MobileOptimizationScriptingMethods.html
+https://docs.unity3d.com/es/current/Manual/MobileOptimizationPracticalScriptingOptimizations.html
+--------------------------------------------------------------------------------------------------
+Rangos Militares
+-----------------
 https://es.wikipedia.org/wiki/Rango_(militar)
 https://es.wikipedia.org/wiki/Fuerzas_Armadas_del_Ecuador#Rangos
 https://es.wikipedia.org/wiki/Ej%C3%A9rcito_Ecuatoriano
