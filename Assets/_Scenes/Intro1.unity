@@ -196,12 +196,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf7e8569e83c564685eb18725071410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NombreDerecha: {fileID: 1336686387}
-  NombreIzquierda: {fileID: 965530649}
+  NombreDerecha: {fileID: 965530649}
+  NombreIzquierda: {fileID: 1336686387}
   DialogoTexto: {fileID: 359632355}
-  ImagenDerecha: {fileID: 1828710829}
-  ImagenIzquierda: {fileID: 1716286375}
+  ImagenDerecha: {fileID: 1716286375}
+  ImagenIzquierda: {fileID: 1828710829}
   SiguienteEscena: Escena1
+  Dialogo: "Personaje1:Dialogo de personaje A:0:I\r\nPersonaje2:Dialogo de personaje
+    B:0:D\r\nPersonaje1:Otro dialogo de A:1:I\r"
 --- !u!1 &104512885
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +558,7 @@ GameObject:
   - component: {fileID: 965530650}
   - component: {fileID: 965530649}
   m_Layer: 5
-  m_Name: NombreIzquierda
+  m_Name: EnemigoDerechaNombre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +614,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nombre Izquierda
+  m_Text: Nombre
 --- !u!222 &965530650
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -630,7 +632,7 @@ GameObject:
   - component: {fileID: 1336686388}
   - component: {fileID: 1336686387}
   m_Layer: 5
-  m_Name: NombreDerecha
+  m_Name: HeroeIzquierdaNombre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nombre Derecha
+  m_Text: Heroe
 --- !u!222 &1336686388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -705,7 +707,7 @@ GameObject:
   - component: {fileID: 1716286375}
   - component: {fileID: 1716286377}
   m_Layer: 5
-  m_Name: Izquierda
+  m_Name: EnemigoDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,7 +791,7 @@ GameObject:
   - component: {fileID: 1828710829}
   - component: {fileID: 1828710831}
   m_Layer: 5
-  m_Name: Derecha
+  m_Name: HeroeIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +862,6 @@ MonoBehaviour:
   ImagenesPersonaje:
   - {fileID: 21300000, guid: 5d6a1fd52f754fc448401f0e01193c70, type: 3}
   - {fileID: 21300000, guid: 2338b0a07fc50ef4badceea82aa0d5f7, type: 3}
-  - {fileID: 21300000, guid: 8113dc65c5484d44d9f7572d617d43b9, type: 3}
 --- !u!1 &1850863399
 GameObject:
   m_ObjectHideFlags: 0

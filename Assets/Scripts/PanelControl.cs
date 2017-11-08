@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 public class PanelControl : MonoBehaviour
@@ -16,6 +16,8 @@ public class PanelControl : MonoBehaviour
     public Image ImagenDerecha;
     public Image ImagenIzquierda;
     public string SiguienteEscena;
+    [TextArea(2, 10)]
+    public string Dialogo;
 
     struct DialogueLine // The data of each line of dialogue
     {
@@ -40,15 +42,16 @@ public class PanelControl : MonoBehaviour
 
     void Start ()
     {
-        string file = "Assets/Data/Dialogos.txt";
-        string sceneName = EditorSceneManager.GetActiveScene().name; // Gets the current Scene saved name
+        //string file = "Assets/Data/Dialogos.txt";
+        string sceneName = SceneManager.GetActiveScene().name; // Gets the current Scene saved name
         // Regex is a way to manipulate strings
         sceneName = Regex.Replace(sceneName, "[^0-9]", ""); //Replace everything except numbers in the string with ""
         sceneNum = int.Parse(sceneName);
 
         lines = new List<DialogueLine>();
 
-        LoadDialogue(file);
+        //LoadDialogue(file);
+        DialogoLoad();
         PanelBotonClick();
     }
 
@@ -79,6 +82,23 @@ public class PanelControl : MonoBehaviour
             }
             while (line != null);
             r.Close();
+        }
+    }
+
+    private void DialogoLoad()
+    {
+        if (Dialogo != null)
+        {
+            using (StringReader reader = new StringReader(Dialogo))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] lineData = line.Split(':');
+                    DialogueLine lineEntry = new DialogueLine(lineData[0], lineData[1], int.Parse(lineData[2]), lineData[3]);
+                    lines.Add(lineEntry);
+                }
+            }
         }
     }
 
