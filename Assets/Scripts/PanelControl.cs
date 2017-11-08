@@ -16,6 +16,8 @@ public class PanelControl : MonoBehaviour
     public Image ImagenDerecha;
     public Image ImagenIzquierda;
     public string SiguienteEscena;
+
+    [Tooltip("Nombre:Dialogo:NumImagen{inicia en 0}:Posicion{I=izquierda,D=derecha}")]
     [TextArea(2, 10)]
     public string Dialogo;
 
