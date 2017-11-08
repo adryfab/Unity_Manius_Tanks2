@@ -2,6 +2,9 @@ Optimizacion
 ------------
 https://docs.unity3d.com/es/current/Manual/MobileOptimizationScriptingMethods.html
 https://docs.unity3d.com/es/current/Manual/MobileOptimizationPracticalScriptingOptimizations.html
+https://www.youtube.com/watch?v=HsGZ83sQyBI
+https://www.youtube.com/watch?v=j4YAY36xjwE
+http://images.response.unity3d.com/Web/Unity/%7B5f421710-f3eb-4ff3-8226-3b4b890b9e97%7D_Optimizing_Mobile_Applications.pdf
 --------------------------------------------------------------------------------------------------
 Rangos Militares
 -----------------
