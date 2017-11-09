@@ -1,7 +1,0 @@
-- Cambiar las piedras unitarias por una sola grande
-- Añadir más niveles --> ¿Cuánto será el maximo?
-- Añadir más Intro
-- Entre escena fin y nueva escena, seleccionar que escena continua
-- Añadir más recompensas
-- Revisar las opciones de compras in-app
-- Revisar las optimizaciones
