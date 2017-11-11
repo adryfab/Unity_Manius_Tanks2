@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour
 {
     public Text timer;
     public AudioSource audioGame;
+    public string proximaEscena;
 
     private EnemyControl enemyCtr;
     private int TiempoEscena;
@@ -64,6 +65,7 @@ public class GameControl : MonoBehaviour
             escenaActual = 1;
         }
         ProjectVars.Instance.newScene = escenaActual + 1;
+        ProjectVars.Instance.ProximaEscena = proximaEscena;
         SceneManager.LoadScene("FinEscena");
     }
 

@@ -12,6 +12,7 @@ public class ProjectVars : Singleton<ProjectVars> {
     public int tiempoGanador;
     public bool premioRecogido;
     public bool AudioEncendido = true;
+    public string ProximaEscena;
 
 	public static ProjectVars Instance {
 		get {

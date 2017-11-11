@@ -8,7 +8,6 @@ public class FinEscenaGameControl : MonoBehaviour
 {
     public Text txtMensaje;
     public Button btnContinuar;
-    //public Image medalla;
     public GameObject MedallaBronce;
     public GameObject MedallaPlata;
     public GameObject MedallaOro;
@@ -106,7 +105,14 @@ public class FinEscenaGameControl : MonoBehaviour
         escena = ProjectVars.Instance.newScene;
         if (escena <= ProjectVars.Instance.maxScene)
         {
-            SceneManager.LoadScene("Escena" + escena);
+            if (ProjectVars.Instance.ProximaEscena != null)
+            {
+                SceneManager.LoadScene(ProjectVars.Instance.ProximaEscena);
+            }
+            else
+            {
+                SceneManager.LoadScene("Escena" + escena);
+            }
         }
     }
 }

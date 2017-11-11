@@ -1303,6 +1303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 529123862}
   audioGame: {fileID: 1047101434}
+  proximaEscena: Intro2
 --- !u!82 &1047101434
 AudioSource:
   m_ObjectHideFlags: 0
