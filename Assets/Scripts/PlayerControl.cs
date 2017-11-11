@@ -11,8 +11,8 @@ public class PlayerControl : MonoBehaviour {
     public GameObject disparo;
     public Transform trans;
     public int vida = 3;
-    public Text txt;
-    public Slider slider;
+    //public Text txt;
+    //public Slider slider;
     public GameObject game;
     public Color PlayerColor;
     public Image life;
@@ -44,8 +44,8 @@ public class PlayerControl : MonoBehaviour {
         Disparar();
 
         //***Vida***
-        txt.text = vida.ToString();
-        slider.value = vida;
+        //txt.text = vida.ToString();
+        //slider.value = vida;
         Vida();
     }
 
