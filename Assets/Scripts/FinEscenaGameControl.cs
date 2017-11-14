@@ -105,7 +105,7 @@ public class FinEscenaGameControl : MonoBehaviour
         escena = ProjectVars.Instance.newScene;
         if (escena <= ProjectVars.Instance.maxScene)
         {
-            if (ProjectVars.Instance.ProximaEscena != null)
+            if (ProjectVars.Instance.ProximaEscena != null && ProjectVars.Instance.ProximaEscena != "")
             {
                 SceneManager.LoadScene(ProjectVars.Instance.ProximaEscena);
             }
